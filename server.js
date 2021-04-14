@@ -91,9 +91,9 @@ app.get('/api/notes/:notes', (req, res) => {
 
   console.log(note);
 
-    /* Check each character routeName and see if the same as "chosen"
-   If the statement is true, send the character back as JSON,
-   otherwise tell the user no character was found */
+    /* Check each  routeName and see if the same as "chosen"
+   If the statement is true, send the note back as JSON,
+   otherwise tell the user no note was found */
 
    for (let i = 0; i < notes.length; i++) {
     if (chosen === notes[i].routeName) {
@@ -104,13 +104,13 @@ app.get('/api/notes/:notes', (req, res) => {
   return res.json(false);
 });
 
-// Create New Characters - takes in JSON input
+// Create New note- takes in JSON input
 app.post('/api/noteTitle', (req, res) => {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     const newNoteTitle = req.body;
   
-    // Using a RegEx Pattern to remove spaces from newCharacter
+    // Using a RegEx Pattern to remove spaces from newnote
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
     newNoteTitle.routeName = newNoteTitle.name.replace(/\s+/g, '').toLowerCase();
     console.log(newNoteTitle);
