@@ -78,9 +78,9 @@ app.delete('/api/notes/:id', (req, res) => {
 // Routes
 
 // Basic route that sends the user first to the AJAX Page
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'main', 'index.html')));
 
-app.get('/add', (req, res) => res.sendFile(path.join(__dirname, '/notes.html')));
+app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'main', '/notes.html')));
 
 // Displays all characters
 app.get('/api/notes', (req, res) => res.json(notes));
