@@ -1,8 +1,9 @@
 // Dependencies
-
+const fs = require("fs");
 const express = require('express');
 const path = require('path');
-
+const uuid = require("uuid");
+const uuidv1 = uuid.v1();
 // Sets up the Express App
 
 const app = express();
@@ -33,7 +34,7 @@ app.post('/api/notes', (req, res) => {
     let note = {
       title: req.body.title,
       text: req.body.text,
-      id: uuidv1()
+      id: uuid.v1()
     }
     // Add data to existing json array
     json.push(note);
@@ -78,9 +79,7 @@ app.delete('/api/notes/:id', (req, res) => {
 // Routes
 
 // Basic route that sends the user first to the AJAX Page
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'main', 'index.html')));
-
-app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'main', '/notes.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'main', '/notes.html')));
 
 // Displays all characters
 app.get('/api/notes', (req, res) => res.json(notes));
@@ -88,8 +87,9 @@ app.get('/api/notes', (req, res) => res.json(notes));
 // Displays a single character, or returns false
 app.get('/api/notes/:notes', (req, res) => {
   const note = req.params.notes;
+   console.log(note);
 
-  console.log(note);
+
 
     /* Check each  routeName and see if the same as "chosen"
    If the statement is true, send the note back as JSON,
@@ -103,6 +103,8 @@ app.get('/api/notes/:notes', (req, res) => {
 
   return res.json(false);
 });
+
+
 
 // Create New note- takes in JSON input
 app.post('/api/noteTitle', (req, res) => {
@@ -119,6 +121,6 @@ app.post('/api/noteTitle', (req, res) => {
     res.json(newNoteTitle);
   });
 
-  
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'main', 'index.html')));
 app.listen(PORT, () => console.log(`App listening on PORT http://localhost:${PORT}`));
   

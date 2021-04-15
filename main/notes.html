@@ -37,12 +37,13 @@
       </div>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
   <script type="text/javascript">
 
 
 
 
-var $noteTitle =(".note-title");
+var $noteTitle =$(".note-title");
 var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
 var $newNoteBtn = $(".new-note");
@@ -176,7 +177,7 @@ var getAndRenderNotes = function() {
   });
 };
 
-saveNoteBtn.on("click", handleNoteSave);
+$saveNoteBtn.on("click", handleNoteSave);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
